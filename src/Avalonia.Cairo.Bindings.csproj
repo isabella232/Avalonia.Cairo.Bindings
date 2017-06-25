@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
+    <Copyright>https://github.com/mono/mono/blob/master/mcs/AUTHORS</Copyright>
+    <PackageProjectUrl>Avalonia.Cairo.Bindings</PackageProjectUrl>
+    <VersionPrefix>0.0.1</VersionPrefix>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Collections.NonGeneric">
