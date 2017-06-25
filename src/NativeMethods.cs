@@ -33,6 +33,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+// ReSharper disable All
 
 namespace Cairo
 {
@@ -43,806 +44,1067 @@ namespace Cairo
 	{
 		const string cairo = "libcairo.so.2";
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_arc (IntPtr cr, double xc, double yc, double radius, double angle1, double angle2);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_arc_delegate (IntPtr cr, double xc, double yc, double radius, double angle1, double angle2);
+		public static cairo_arc_delegate cairo_arc => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_arc_delegate>("cairo_arc");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_arc_negative (IntPtr cr, double xc, double yc, double radius, double angle1, double angle2);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_arc_negative_delegate (IntPtr cr, double xc, double yc, double radius, double angle1, double angle2);
+		public static cairo_arc_negative_delegate cairo_arc_negative => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_arc_negative_delegate>("cairo_arc_negative");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_atsui_font_face_create_for_atsu_font_id (IntPtr font_id);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_atsui_font_face_create_for_atsu_font_id_delegate (IntPtr font_id);
+		public static cairo_atsui_font_face_create_for_atsu_font_id_delegate cairo_atsui_font_face_create_for_atsu_font_id => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_atsui_font_face_create_for_atsu_font_id_delegate>("cairo_atsui_font_face_create_for_atsu_font_id");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_clip (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_clip_delegate (IntPtr cr);
+		public static cairo_clip_delegate cairo_clip => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_clip_delegate>("cairo_clip");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_clip_preserve (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_clip_preserve_delegate (IntPtr cr);
+		public static cairo_clip_preserve_delegate cairo_clip_preserve => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_clip_preserve_delegate>("cairo_clip_preserve");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_clip_extents (IntPtr cr, out double x1, out double y1, out double x2, out double y2);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_clip_extents_delegate (IntPtr cr, out double x1, out double y1, out double x2, out double y2);
+		public static cairo_clip_extents_delegate cairo_clip_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_clip_extents_delegate>("cairo_clip_extents");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_close_path (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_close_path_delegate (IntPtr cr);
+		public static cairo_close_path_delegate cairo_close_path => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_close_path_delegate>("cairo_close_path");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_copy_page (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_copy_page_delegate (IntPtr cr);
+		public static cairo_copy_page_delegate cairo_copy_page => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_copy_page_delegate>("cairo_copy_page");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_copy_path (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_copy_path_delegate (IntPtr cr);
+		public static cairo_copy_path_delegate cairo_copy_path => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_copy_path_delegate>("cairo_copy_path");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_copy_path_flat (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_copy_path_flat_delegate (IntPtr cr);
+		public static cairo_copy_path_flat_delegate cairo_copy_path_flat => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_copy_path_flat_delegate>("cairo_copy_path_flat");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_append_path (IntPtr cr, IntPtr path);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_append_path_delegate (IntPtr cr, IntPtr path);
+		public static cairo_append_path_delegate cairo_append_path => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_append_path_delegate>("cairo_append_path");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_create (IntPtr target);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_create_delegate (IntPtr target);
+		public static cairo_create_delegate cairo_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_create_delegate>("cairo_create");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_curve_to (IntPtr cr, double x1, double y1, double x2, double y2, double x3, double y3);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_curve_to_delegate (IntPtr cr, double x1, double y1, double x2, double y2, double x3, double y3);
+		public static cairo_curve_to_delegate cairo_curve_to => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_curve_to_delegate>("cairo_curve_to");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_debug_reset_static_data ();
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_debug_reset_static_data_delegate ();
+		public static cairo_debug_reset_static_data_delegate cairo_debug_reset_static_data => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_debug_reset_static_data_delegate>("cairo_debug_reset_static_data");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_destroy (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_destroy_delegate (IntPtr cr);
+		public static cairo_destroy_delegate cairo_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_destroy_delegate>("cairo_destroy");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_device_to_user (IntPtr cr, ref double x, ref double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_device_to_user_delegate (IntPtr cr, ref double x, ref double y);
+		public static cairo_device_to_user_delegate cairo_device_to_user => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_device_to_user_delegate>("cairo_device_to_user");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_device_to_user_distance (IntPtr cr, ref double dx, ref double dy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_device_to_user_distance_delegate (IntPtr cr, ref double dx, ref double dy);
+		public static cairo_device_to_user_distance_delegate cairo_device_to_user_distance => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_device_to_user_distance_delegate>("cairo_device_to_user_distance");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_fill (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_fill_delegate (IntPtr cr);
+		public static cairo_fill_delegate cairo_fill => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_fill_delegate>("cairo_fill");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_fill_extents (IntPtr cr, out double x1, out double y1, out double x2, out double y2);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_fill_extents_delegate (IntPtr cr, out double x1, out double y1, out double x2, out double y2);
+		public static cairo_fill_extents_delegate cairo_fill_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_fill_extents_delegate>("cairo_fill_extents");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_fill_preserve (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_fill_preserve_delegate (IntPtr cr);
+		public static cairo_fill_preserve_delegate cairo_fill_preserve => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_fill_preserve_delegate>("cairo_fill_preserve");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_font_extents (IntPtr cr, out FontExtents extents);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_font_extents_delegate (IntPtr cr, out FontExtents extents);
+		public static cairo_font_extents_delegate cairo_font_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_extents_delegate>("cairo_font_extents");
 		
 		// FontFace
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_font_face_destroy (IntPtr font_face);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_font_face_destroy_delegate (IntPtr font_face);
+		public static cairo_font_face_destroy_delegate cairo_font_face_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_face_destroy_delegate>("cairo_font_face_destroy");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern FontType cairo_font_face_get_type (IntPtr font_face);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate FontType cairo_font_face_get_type_delegate (IntPtr font_face);
+		public static cairo_font_face_get_type_delegate cairo_font_face_get_type => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_face_get_type_delegate>("cairo_font_face_get_type");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_font_face_reference (IntPtr font_face);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_font_face_reference_delegate (IntPtr font_face);
+		public static cairo_font_face_reference_delegate cairo_font_face_reference => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_face_reference_delegate>("cairo_font_face_reference");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_font_face_status (IntPtr font_face);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_font_face_status_delegate (IntPtr font_face);
+		public static cairo_font_face_status_delegate cairo_font_face_status => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_face_status_delegate>("cairo_font_face_status");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern uint cairo_font_face_get_reference_count (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate uint cairo_font_face_get_reference_count_delegate (IntPtr surface);
+		public static cairo_font_face_get_reference_count_delegate cairo_font_face_get_reference_count => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_face_get_reference_count_delegate>("cairo_font_face_get_reference_count");
 		
 		// FontOptions
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_font_options_copy (IntPtr original);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_font_options_copy_delegate (IntPtr original);
+		public static cairo_font_options_copy_delegate cairo_font_options_copy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_copy_delegate>("cairo_font_options_copy");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_font_options_create ();
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_font_options_create_delegate ();
+		public static cairo_font_options_create_delegate cairo_font_options_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_create_delegate>("cairo_font_options_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_font_options_destroy (IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_font_options_destroy_delegate (IntPtr options);
+		public static cairo_font_options_destroy_delegate cairo_font_options_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_destroy_delegate>("cairo_font_options_destroy");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		[return: MarshalAs (UnmanagedType.U1)]
-		internal static extern bool cairo_font_options_equal (IntPtr options, IntPtr other);
+		public delegate bool cairo_font_options_equal_delegate (IntPtr options, IntPtr other);
+		public static cairo_font_options_equal_delegate cairo_font_options_equal => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_equal_delegate>("cairo_font_options_equal");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Antialias cairo_font_options_get_antialias (IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Antialias cairo_font_options_get_antialias_delegate (IntPtr options);
+		public static cairo_font_options_get_antialias_delegate cairo_font_options_get_antialias => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_get_antialias_delegate>("cairo_font_options_get_antialias");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern HintMetrics cairo_font_options_get_hint_metrics (IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate HintMetrics cairo_font_options_get_hint_metrics_delegate (IntPtr options);
+		public static cairo_font_options_get_hint_metrics_delegate cairo_font_options_get_hint_metrics => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_get_hint_metrics_delegate>("cairo_font_options_get_hint_metrics");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern HintStyle cairo_font_options_get_hint_style (IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate HintStyle cairo_font_options_get_hint_style_delegate (IntPtr options);
+		public static cairo_font_options_get_hint_style_delegate cairo_font_options_get_hint_style => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_get_hint_style_delegate>("cairo_font_options_get_hint_style");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern SubpixelOrder cairo_font_options_get_subpixel_order (IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate SubpixelOrder cairo_font_options_get_subpixel_order_delegate (IntPtr options);
+		public static cairo_font_options_get_subpixel_order_delegate cairo_font_options_get_subpixel_order => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_get_subpixel_order_delegate>("cairo_font_options_get_subpixel_order");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern long cairo_font_options_hash (IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate long cairo_font_options_hash_delegate (IntPtr options);
+		public static cairo_font_options_hash_delegate cairo_font_options_hash => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_hash_delegate>("cairo_font_options_hash");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_font_options_merge (IntPtr options, IntPtr other);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_font_options_merge_delegate (IntPtr options, IntPtr other);
+		public static cairo_font_options_merge_delegate cairo_font_options_merge => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_merge_delegate>("cairo_font_options_merge");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_font_options_set_antialias (IntPtr options, Antialias aa);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_font_options_set_antialias_delegate (IntPtr options, Antialias aa);
+		public static cairo_font_options_set_antialias_delegate cairo_font_options_set_antialias => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_set_antialias_delegate>("cairo_font_options_set_antialias");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_font_options_set_hint_metrics (IntPtr options, HintMetrics metrics);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_font_options_set_hint_metrics_delegate (IntPtr options, HintMetrics metrics);
+		public static cairo_font_options_set_hint_metrics_delegate cairo_font_options_set_hint_metrics => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_set_hint_metrics_delegate>("cairo_font_options_set_hint_metrics");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_font_options_set_hint_style (IntPtr options, HintStyle style);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_font_options_set_hint_style_delegate (IntPtr options, HintStyle style);
+		public static cairo_font_options_set_hint_style_delegate cairo_font_options_set_hint_style => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_set_hint_style_delegate>("cairo_font_options_set_hint_style");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_font_options_set_subpixel_order (IntPtr options, SubpixelOrder order);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_font_options_set_subpixel_order_delegate (IntPtr options, SubpixelOrder order);
+		public static cairo_font_options_set_subpixel_order_delegate cairo_font_options_set_subpixel_order => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_set_subpixel_order_delegate>("cairo_font_options_set_subpixel_order");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_font_options_status (IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_font_options_status_delegate (IntPtr options);
+		public static cairo_font_options_status_delegate cairo_font_options_status => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_font_options_status_delegate>("cairo_font_options_status");
 		
 		// Freetype / FontConfig 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_ft_font_face_create_for_ft_face (IntPtr face, int load_flags);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_ft_font_face_create_for_ft_face_delegate (IntPtr face, int load_flags);
+		public static cairo_ft_font_face_create_for_ft_face_delegate cairo_ft_font_face_create_for_ft_face => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ft_font_face_create_for_ft_face_delegate>("cairo_ft_font_face_create_for_ft_face");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_ft_font_face_create_for_pattern (IntPtr fc_pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_ft_font_face_create_for_pattern_delegate (IntPtr fc_pattern);
+		public static cairo_ft_font_face_create_for_pattern_delegate cairo_ft_font_face_create_for_pattern => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ft_font_face_create_for_pattern_delegate>("cairo_ft_font_face_create_for_pattern");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_ft_font_options_substitute (FontOptions options, IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_ft_font_options_substitute_delegate (FontOptions options, IntPtr pattern);
+		public static cairo_ft_font_options_substitute_delegate cairo_ft_font_options_substitute => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ft_font_options_substitute_delegate>("cairo_ft_font_options_substitute");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_ft_scaled_font_lock_face (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_ft_scaled_font_lock_face_delegate (IntPtr scaled_font);
+		public static cairo_ft_scaled_font_lock_face_delegate cairo_ft_scaled_font_lock_face => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ft_scaled_font_lock_face_delegate>("cairo_ft_scaled_font_lock_face");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_ft_scaled_font_unlock_face (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_ft_scaled_font_unlock_face_delegate (IntPtr scaled_font);
+		public static cairo_ft_scaled_font_unlock_face_delegate cairo_ft_scaled_font_unlock_face => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ft_scaled_font_unlock_face_delegate>("cairo_ft_scaled_font_unlock_face");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Antialias cairo_get_antialias (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Antialias cairo_get_antialias_delegate (IntPtr cr);
+		public static cairo_get_antialias_delegate cairo_get_antialias => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_antialias_delegate>("cairo_get_antialias");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_get_current_point (IntPtr cr, out double x, out double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_get_current_point_delegate (IntPtr cr, out double x, out double y);
+		public static cairo_get_current_point_delegate cairo_get_current_point => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_current_point_delegate>("cairo_get_current_point");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern FillRule cairo_get_fill_rule (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate FillRule cairo_get_fill_rule_delegate (IntPtr cr);
+		public static cairo_get_fill_rule_delegate cairo_get_fill_rule => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_fill_rule_delegate>("cairo_get_fill_rule");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_get_font_face (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_get_font_face_delegate (IntPtr cr);
+		public static cairo_get_font_face_delegate cairo_get_font_face => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_font_face_delegate>("cairo_get_font_face");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_get_font_matrix (IntPtr cr, out Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_get_font_matrix_delegate (IntPtr cr, out Matrix matrix);
+		public static cairo_get_font_matrix_delegate cairo_get_font_matrix => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_font_matrix_delegate>("cairo_get_font_matrix");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_get_font_options (IntPtr cr, IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_get_font_options_delegate (IntPtr cr, IntPtr options);
+		public static cairo_get_font_options_delegate cairo_get_font_options => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_font_options_delegate>("cairo_get_font_options");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_get_group_target (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_get_group_target_delegate (IntPtr cr);
+		public static cairo_get_group_target_delegate cairo_get_group_target => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_group_target_delegate>("cairo_get_group_target");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern LineCap cairo_get_line_cap (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate LineCap cairo_get_line_cap_delegate (IntPtr cr);
+		public static cairo_get_line_cap_delegate cairo_get_line_cap => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_line_cap_delegate>("cairo_get_line_cap");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern LineJoin cairo_get_line_join (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate LineJoin cairo_get_line_join_delegate (IntPtr cr);
+		public static cairo_get_line_join_delegate cairo_get_line_join => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_line_join_delegate>("cairo_get_line_join");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern double cairo_get_line_width (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate double cairo_get_line_width_delegate (IntPtr cr);
+		public static cairo_get_line_width_delegate cairo_get_line_width => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_line_width_delegate>("cairo_get_line_width");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_get_matrix (IntPtr cr, Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_get_matrix_delegate (IntPtr cr, Matrix matrix);
+		public static cairo_get_matrix_delegate cairo_get_matrix => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_matrix_delegate>("cairo_get_matrix");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern double cairo_get_miter_limit (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate double cairo_get_miter_limit_delegate (IntPtr cr);
+		public static cairo_get_miter_limit_delegate cairo_get_miter_limit => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_miter_limit_delegate>("cairo_get_miter_limit");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Operator cairo_get_operator (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Operator cairo_get_operator_delegate (IntPtr cr);
+		public static cairo_get_operator_delegate cairo_get_operator => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_operator_delegate>("cairo_get_operator");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern uint cairo_get_reference_count (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate uint cairo_get_reference_count_delegate (IntPtr surface);
+		public static cairo_get_reference_count_delegate cairo_get_reference_count => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_reference_count_delegate>("cairo_get_reference_count");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_get_source (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_get_source_delegate (IntPtr cr);
+		public static cairo_get_source_delegate cairo_get_source => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_source_delegate>("cairo_get_source");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_get_target (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_get_target_delegate (IntPtr cr);
+		public static cairo_get_target_delegate cairo_get_target => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_target_delegate>("cairo_get_target");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern double cairo_get_tolerance (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate double cairo_get_tolerance_delegate (IntPtr cr);
+		public static cairo_get_tolerance_delegate cairo_get_tolerance => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_tolerance_delegate>("cairo_get_tolerance");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_glitz_surface_create (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_glitz_surface_create_delegate (IntPtr surface);
+		public static cairo_glitz_surface_create_delegate cairo_glitz_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_glitz_surface_create_delegate>("cairo_glitz_surface_create");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_glyph_extents (IntPtr cr, IntPtr glyphs, int num_glyphs, out TextExtents extents);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_glyph_extents_delegate (IntPtr cr, IntPtr glyphs, int num_glyphs, out TextExtents extents);
+		public static cairo_glyph_extents_delegate cairo_glyph_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_glyph_extents_delegate>("cairo_glyph_extents");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_glyph_path (IntPtr cr, IntPtr glyphs, int num_glyphs);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_glyph_path_delegate (IntPtr cr, IntPtr glyphs, int num_glyphs);
+		public static cairo_glyph_path_delegate cairo_glyph_path => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_glyph_path_delegate>("cairo_glyph_path");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		[return: MarshalAs (UnmanagedType.U1)]
-		internal static extern bool cairo_has_current_point (IntPtr cr);
+		public delegate bool cairo_has_current_point_delegate (IntPtr cr);
+		public static cairo_has_current_point_delegate cairo_has_current_point => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_has_current_point_delegate>("cairo_has_current_point");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_identity_matrix (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_identity_matrix_delegate (IntPtr cr);
+		public static cairo_identity_matrix_delegate cairo_identity_matrix => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_identity_matrix_delegate>("cairo_identity_matrix");
 		
 		// ImageSurface
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_image_surface_create (Cairo.Format format, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_image_surface_create_delegate (Cairo.Format format, int width, int height);
+		public static cairo_image_surface_create_delegate cairo_image_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_create_delegate>("cairo_image_surface_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_image_surface_create_for_data (byte[] data, Cairo.Format format, int width, int height, int stride);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_image_surface_create_for_data_delegate (byte[] data, Cairo.Format format, int width, int height, int stride);
+		public static cairo_image_surface_create_for_data_delegate cairo_image_surface_create_for_data => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_create_for_data_delegate>("cairo_image_surface_create_for_data");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_image_surface_create_for_data (IntPtr data, Cairo.Format format, int width, int height, int stride);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_image_surface_create_for_data_ptr_delegate (IntPtr data, Cairo.Format format, int width, int height, int stride);
+		public static cairo_image_surface_create_for_data_ptr_delegate cairo_image_surface_create_for_data_ptr => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_create_for_data_ptr_delegate>("cairo_image_surface_create_for_data");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_image_surface_create_from_png  (string filename);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_image_surface_create_from_png_delegate (string filename);
+		public static cairo_image_surface_create_from_png_delegate cairo_image_surface_create_from_png => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_create_from_png_delegate>("cairo_image_surface_create_from_png");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_image_surface_get_data (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_image_surface_get_data_delegate (IntPtr surface);
+		public static cairo_image_surface_get_data_delegate cairo_image_surface_get_data => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_get_data_delegate>("cairo_image_surface_get_data");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Format cairo_image_surface_get_format (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Format cairo_image_surface_get_format_delegate (IntPtr surface);
+		public static cairo_image_surface_get_format_delegate cairo_image_surface_get_format => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_get_format_delegate>("cairo_image_surface_get_format");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_image_surface_get_height (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_image_surface_get_height_delegate (IntPtr surface);
+		public static cairo_image_surface_get_height_delegate cairo_image_surface_get_height => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_get_height_delegate>("cairo_image_surface_get_height");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_image_surface_get_stride (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_image_surface_get_stride_delegate (IntPtr surface);
+		public static cairo_image_surface_get_stride_delegate cairo_image_surface_get_stride => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_get_stride_delegate>("cairo_image_surface_get_stride");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_image_surface_get_width  (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_image_surface_get_width_delegate (IntPtr surface);
+		public static cairo_image_surface_get_width_delegate cairo_image_surface_get_width => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_image_surface_get_width_delegate>("cairo_image_surface_get_width");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		[return: MarshalAs (UnmanagedType.U1)]
-		internal static extern bool cairo_in_clip (IntPtr cr, double x, double y);
+		public delegate bool cairo_in_clip_delegate (IntPtr cr, double x, double y);
+		public static cairo_in_clip_delegate cairo_in_clip => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_in_clip_delegate>("cairo_in_clip");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		[return: MarshalAs (UnmanagedType.U1)]
-		internal static extern bool cairo_in_fill (IntPtr cr, double x, double y);
+		public delegate bool cairo_in_fill_delegate (IntPtr cr, double x, double y);
+		public static cairo_in_fill_delegate cairo_in_fill => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_in_fill_delegate>("cairo_in_fill");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		[return: MarshalAs (UnmanagedType.U1)]
-		internal static extern bool cairo_in_stroke (IntPtr cr, double x, double y);
+		public delegate bool cairo_in_stroke_delegate (IntPtr cr, double x, double y);
+		public static cairo_in_stroke_delegate cairo_in_stroke => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_in_stroke_delegate>("cairo_in_stroke");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_line_to (IntPtr cr, double x, double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_line_to_delegate (IntPtr cr, double x, double y);
+		public static cairo_line_to_delegate cairo_line_to => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_line_to_delegate>("cairo_line_to");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_mask (IntPtr cr, IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_mask_delegate (IntPtr cr, IntPtr pattern);
+		public static cairo_mask_delegate cairo_mask => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_mask_delegate>("cairo_mask");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_mask_surface (IntPtr cr, IntPtr surface, double x, double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_mask_surface_delegate (IntPtr cr, IntPtr surface, double x, double y);
+		public static cairo_mask_surface_delegate cairo_mask_surface => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_mask_surface_delegate>("cairo_mask_surface");
 		
 		// Matrix
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_init (Matrix matrix, double xx, double yx, double xy, double yy, double x0, double y0);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_init_delegate (Matrix matrix, double xx, double yx, double xy, double yy, double x0, double y0);
+		public static cairo_matrix_init_delegate cairo_matrix_init => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_init_delegate>("cairo_matrix_init");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_init_identity (Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_init_identity_delegate (Matrix matrix);
+		public static cairo_matrix_init_identity_delegate cairo_matrix_init_identity => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_init_identity_delegate>("cairo_matrix_init_identity");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_init_rotate (Matrix matrix, double radians);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_init_rotate_delegate (Matrix matrix, double radians);
+		public static cairo_matrix_init_rotate_delegate cairo_matrix_init_rotate => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_init_rotate_delegate>("cairo_matrix_init_rotate");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_init_scale (Matrix matrix, double sx, double sy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_init_scale_delegate (Matrix matrix, double sx, double sy);
+		public static cairo_matrix_init_scale_delegate cairo_matrix_init_scale => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_init_scale_delegate>("cairo_matrix_init_scale");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_init_translate (Matrix matrix, double tx, double ty);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_init_translate_delegate (Matrix matrix, double tx, double ty);
+		public static cairo_matrix_init_translate_delegate cairo_matrix_init_translate => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_init_translate_delegate>("cairo_matrix_init_translate");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_matrix_invert (Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_matrix_invert_delegate (Matrix matrix);
+		public static cairo_matrix_invert_delegate cairo_matrix_invert => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_invert_delegate>("cairo_matrix_invert");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_multiply (Matrix result, Matrix a, Matrix b);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_multiply_delegate (Matrix result, Matrix a, Matrix b);
+		public static cairo_matrix_multiply_delegate cairo_matrix_multiply => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_multiply_delegate>("cairo_matrix_multiply");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_scale (Matrix matrix, double sx, double sy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_scale_delegate (Matrix matrix, double sx, double sy);
+		public static cairo_matrix_scale_delegate cairo_matrix_scale => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_scale_delegate>("cairo_matrix_scale");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_rotate (Matrix matrix, double radians);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_rotate_delegate (Matrix matrix, double radians);
+		public static cairo_matrix_rotate_delegate cairo_matrix_rotate => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_rotate_delegate>("cairo_matrix_rotate");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_transform_distance (Matrix matrix, ref double dx, ref double dy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_transform_distance_delegate (Matrix matrix, ref double dx, ref double dy);
+		public static cairo_matrix_transform_distance_delegate cairo_matrix_transform_distance => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_transform_distance_delegate>("cairo_matrix_transform_distance");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_transform_point (Matrix matrix, ref double x, ref double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_transform_point_delegate (Matrix matrix, ref double x, ref double y);
+		public static cairo_matrix_transform_point_delegate cairo_matrix_transform_point => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_transform_point_delegate>("cairo_matrix_transform_point");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_matrix_translate (Matrix matrix, double tx, double ty);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_matrix_translate_delegate (Matrix matrix, double tx, double ty);
+		public static cairo_matrix_translate_delegate cairo_matrix_translate => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_matrix_translate_delegate>("cairo_matrix_translate");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_move_to (IntPtr cr, double x, double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_move_to_delegate (IntPtr cr, double x, double y);
+		public static cairo_move_to_delegate cairo_move_to => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_move_to_delegate>("cairo_move_to");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_new_path (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_new_path_delegate (IntPtr cr);
+		public static cairo_new_path_delegate cairo_new_path => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_new_path_delegate>("cairo_new_path");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_new_sub_path (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_new_sub_path_delegate (IntPtr cr);
+		public static cairo_new_sub_path_delegate cairo_new_sub_path => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_new_sub_path_delegate>("cairo_new_sub_path");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_paint (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_paint_delegate (IntPtr cr);
+		public static cairo_paint_delegate cairo_paint => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_paint_delegate>("cairo_paint");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_paint_with_alpha (IntPtr cr, double alpha);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_paint_with_alpha_delegate (IntPtr cr, double alpha);
+		public static cairo_paint_with_alpha_delegate cairo_paint_with_alpha => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_paint_with_alpha_delegate>("cairo_paint_with_alpha");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_path_destroy (IntPtr path);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_path_destroy_delegate (IntPtr path);
+		public static cairo_path_destroy_delegate cairo_path_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_path_destroy_delegate>("cairo_path_destroy");
 		
 		// Pattern
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pattern_add_color_stop_rgb (IntPtr pattern, double offset, double red, double green, double blue);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pattern_add_color_stop_rgb_delegate (IntPtr pattern, double offset, double red, double green, double blue);
+		public static cairo_pattern_add_color_stop_rgb_delegate cairo_pattern_add_color_stop_rgb => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_add_color_stop_rgb_delegate>("cairo_pattern_add_color_stop_rgb");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pattern_add_color_stop_rgba (IntPtr pattern, double offset, double red, double green, double blue, double alpha);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pattern_add_color_stop_rgba_delegate (IntPtr pattern, double offset, double red, double green, double blue, double alpha);
+		public static cairo_pattern_add_color_stop_rgba_delegate cairo_pattern_add_color_stop_rgba => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_add_color_stop_rgba_delegate>("cairo_pattern_add_color_stop_rgba");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_pattern_get_color_stop_count (IntPtr pattern, out int count);
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_pattern_get_color_stop_rgba (IntPtr pattern, int index, out double offset, out double red, out double green, out double blue, out double alpha);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_pattern_get_color_stop_count_delegate (IntPtr pattern, out int count);
+		public static cairo_pattern_get_color_stop_count_delegate cairo_pattern_get_color_stop_count => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_color_stop_count_delegate>("cairo_pattern_get_color_stop_count");
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_pattern_get_color_stop_rgba_delegate (IntPtr pattern, int index, out double offset, out double red, out double green, out double blue, out double alpha);
+		public static cairo_pattern_get_color_stop_rgba_delegate cairo_pattern_get_color_stop_rgba => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_color_stop_rgba_delegate>("cairo_pattern_get_color_stop_rgba");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_pattern_create_for_surface (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_pattern_create_for_surface_delegate (IntPtr surface);
+		public static cairo_pattern_create_for_surface_delegate cairo_pattern_create_for_surface => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_create_for_surface_delegate>("cairo_pattern_create_for_surface");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_pattern_get_surface (IntPtr pattern, out IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_pattern_get_surface_delegate (IntPtr pattern, out IntPtr surface);
+		public static cairo_pattern_get_surface_delegate cairo_pattern_get_surface => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_surface_delegate>("cairo_pattern_get_surface");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_pattern_create_linear (double x0, double y0, double x1, double y1);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_pattern_create_linear_delegate (double x0, double y0, double x1, double y1);
+		public static cairo_pattern_create_linear_delegate cairo_pattern_create_linear => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_create_linear_delegate>("cairo_pattern_create_linear");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_pattern_get_linear_points (IntPtr pattern, out double x0, out double y0, out double x1, out double y1);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_pattern_get_linear_points_delegate (IntPtr pattern, out double x0, out double y0, out double x1, out double y1);
+		public static cairo_pattern_get_linear_points_delegate cairo_pattern_get_linear_points => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_linear_points_delegate>("cairo_pattern_get_linear_points");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_pattern_create_radial (double cx0, double cy0, double radius0, double cx1, double cy1, double radius1);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_pattern_create_radial_delegate (double cx0, double cy0, double radius0, double cx1, double cy1, double radius1);
+		public static cairo_pattern_create_radial_delegate cairo_pattern_create_radial => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_create_radial_delegate>("cairo_pattern_create_radial");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_pattern_get_radial_circles (IntPtr pattern, out double x0, out double y0, out double r0, out double x1, out double y1, out double r1);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_pattern_get_radial_circles_delegate (IntPtr pattern, out double x0, out double y0, out double r0, out double x1, out double y1, out double r1);
+		public static cairo_pattern_get_radial_circles_delegate cairo_pattern_get_radial_circles => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_radial_circles_delegate>("cairo_pattern_get_radial_circles");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_pattern_create_rgb (double r, double g, double b);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_pattern_create_rgb_delegate (double r, double g, double b);
+		public static cairo_pattern_create_rgb_delegate cairo_pattern_create_rgb => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_create_rgb_delegate>("cairo_pattern_create_rgb");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_pattern_create_rgba (double r, double g, double b, double a);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_pattern_create_rgba_delegate (double r, double g, double b, double a);
+		public static cairo_pattern_create_rgba_delegate cairo_pattern_create_rgba => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_create_rgba_delegate>("cairo_pattern_create_rgba");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_pattern_get_rgba (IntPtr pattern, out double red, out double green, out double blue, out double alpha);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_pattern_get_rgba_delegate (IntPtr pattern, out double red, out double green, out double blue, out double alpha);
+		public static cairo_pattern_get_rgba_delegate cairo_pattern_get_rgba => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_rgba_delegate>("cairo_pattern_get_rgba");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pattern_destroy (IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pattern_destroy_delegate (IntPtr pattern);
+		public static cairo_pattern_destroy_delegate cairo_pattern_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_destroy_delegate>("cairo_pattern_destroy");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Extend cairo_pattern_get_extend (IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Extend cairo_pattern_get_extend_delegate (IntPtr pattern);
+		public static cairo_pattern_get_extend_delegate cairo_pattern_get_extend => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_extend_delegate>("cairo_pattern_get_extend");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Filter cairo_pattern_get_filter (IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Filter cairo_pattern_get_filter_delegate (IntPtr pattern);
+		public static cairo_pattern_get_filter_delegate cairo_pattern_get_filter => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_filter_delegate>("cairo_pattern_get_filter");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pattern_get_matrix (IntPtr pattern, Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pattern_get_matrix_delegate (IntPtr pattern, Matrix matrix);
+		public static cairo_pattern_get_matrix_delegate cairo_pattern_get_matrix => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_matrix_delegate>("cairo_pattern_get_matrix");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern PatternType cairo_pattern_get_type (IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate PatternType cairo_pattern_get_type_delegate (IntPtr pattern);
+		public static cairo_pattern_get_type_delegate cairo_pattern_get_type => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_get_type_delegate>("cairo_pattern_get_type");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_pattern_reference (IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_pattern_reference_delegate (IntPtr pattern);
+		public static cairo_pattern_reference_delegate cairo_pattern_reference => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_reference_delegate>("cairo_pattern_reference");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pattern_set_extend (IntPtr pattern, Extend extend);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pattern_set_extend_delegate (IntPtr pattern, Extend extend);
+		public static cairo_pattern_set_extend_delegate cairo_pattern_set_extend => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_set_extend_delegate>("cairo_pattern_set_extend");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pattern_set_filter (IntPtr pattern, Filter filter);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pattern_set_filter_delegate (IntPtr pattern, Filter filter);
+		public static cairo_pattern_set_filter_delegate cairo_pattern_set_filter => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_set_filter_delegate>("cairo_pattern_set_filter");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pattern_set_matrix (IntPtr pattern, Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pattern_set_matrix_delegate (IntPtr pattern, Matrix matrix);
+		public static cairo_pattern_set_matrix_delegate cairo_pattern_set_matrix => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_set_matrix_delegate>("cairo_pattern_set_matrix");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_pattern_status (IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_pattern_status_delegate (IntPtr pattern);
+		public static cairo_pattern_status_delegate cairo_pattern_status => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pattern_status_delegate>("cairo_pattern_status");
 	
 		// PdfSurface
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_pdf_surface_create (string filename, double width, double height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_pdf_surface_create_delegate (string filename, double width, double height);
+		public static cairo_pdf_surface_create_delegate cairo_pdf_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pdf_surface_create_delegate>("cairo_pdf_surface_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pdf_surface_set_size (IntPtr surface, double x, double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pdf_surface_set_size_delegate (IntPtr surface, double x, double y);
+		public static cairo_pdf_surface_set_size_delegate cairo_pdf_surface_set_size => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pdf_surface_set_size_delegate>("cairo_pdf_surface_set_size");
 		
 		// PostscriptSurface
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_ps_surface_create (string filename, double width, double height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_ps_surface_create_delegate (string filename, double width, double height);
+		public static cairo_ps_surface_create_delegate cairo_ps_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ps_surface_create_delegate>("cairo_ps_surface_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_ps_surface_dsc_begin_page_setup (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_ps_surface_dsc_begin_page_setup_delegate (IntPtr surface);
+		public static cairo_ps_surface_dsc_begin_page_setup_delegate cairo_ps_surface_dsc_begin_page_setup => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ps_surface_dsc_begin_page_setup_delegate>("cairo_ps_surface_dsc_begin_page_setup");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_ps_surface_dsc_begin_setup (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_ps_surface_dsc_begin_setup_delegate (IntPtr surface);
+		public static cairo_ps_surface_dsc_begin_setup_delegate cairo_ps_surface_dsc_begin_setup => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ps_surface_dsc_begin_setup_delegate>("cairo_ps_surface_dsc_begin_setup");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_ps_surface_dsc_comment (IntPtr surface, string comment);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_ps_surface_dsc_comment_delegate (IntPtr surface, string comment);
+		public static cairo_ps_surface_dsc_comment_delegate cairo_ps_surface_dsc_comment => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ps_surface_dsc_comment_delegate>("cairo_ps_surface_dsc_comment");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_ps_surface_set_size (IntPtr surface, double x, double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_ps_surface_set_size_delegate (IntPtr surface, double x, double y);
+		public static cairo_ps_surface_set_size_delegate cairo_ps_surface_set_size => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_ps_surface_set_size_delegate>("cairo_ps_surface_set_size");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_pop_group (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_pop_group_delegate (IntPtr cr);
+		public static cairo_pop_group_delegate cairo_pop_group => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pop_group_delegate>("cairo_pop_group");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_pop_group_to_source (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_pop_group_to_source_delegate (IntPtr cr);
+		public static cairo_pop_group_to_source_delegate cairo_pop_group_to_source => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_pop_group_to_source_delegate>("cairo_pop_group_to_source");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_push_group (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_push_group_delegate (IntPtr cr);
+		public static cairo_push_group_delegate cairo_push_group => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_push_group_delegate>("cairo_push_group");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_push_group_with_content (IntPtr cr, Content content);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_push_group_with_content_delegate (IntPtr cr, Content content);
+		public static cairo_push_group_with_content_delegate cairo_push_group_with_content => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_push_group_with_content_delegate>("cairo_push_group_with_content");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_quartz_surface_create (IntPtr context, bool flipped, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_quartz_surface_create_delegate (IntPtr context, bool flipped, int width, int height);
+		public static cairo_quartz_surface_create_delegate cairo_quartz_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_quartz_surface_create_delegate>("cairo_quartz_surface_create");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_rectangle (IntPtr cr, double x, double y, double width, double height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_rectangle_delegate (IntPtr cr, double x, double y, double width, double height);
+		public static cairo_rectangle_delegate cairo_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_rectangle_delegate>("cairo_rectangle");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_reference (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_reference_delegate (IntPtr cr);
+		public static cairo_reference_delegate cairo_reference => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_reference_delegate>("cairo_reference");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern bool cairo_region_contains_point (IntPtr region, int x, int y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate bool cairo_region_contains_point_delegate (IntPtr region, int x, int y);
+		public static cairo_region_contains_point_delegate cairo_region_contains_point => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_contains_point_delegate>("cairo_region_contains_point");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern RegionOverlap cairo_region_contains_rectangle (IntPtr region, ref RectangleInt rectangle);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate RegionOverlap cairo_region_contains_rectangle_delegate (IntPtr region, ref RectangleInt rectangle);
+		public static cairo_region_contains_rectangle_delegate cairo_region_contains_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_contains_rectangle_delegate>("cairo_region_contains_rectangle");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_region_copy (IntPtr original);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_region_copy_delegate (IntPtr original);
+		public static cairo_region_copy_delegate cairo_region_copy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_copy_delegate>("cairo_region_copy");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_region_create ();
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_region_create_delegate ();
+		public static cairo_region_create_delegate cairo_region_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_create_delegate>("cairo_region_create");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_region_create_rectangle (ref RectangleInt rect);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_region_create_rectangle_delegate (ref RectangleInt rect);
+		public static cairo_region_create_rectangle_delegate cairo_region_create_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_create_rectangle_delegate>("cairo_region_create_rectangle");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_region_create_rectangles (RectangleInt[] rects, int count);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_region_create_rectangles_delegate (RectangleInt[] rects, int count);
+		public static cairo_region_create_rectangles_delegate cairo_region_create_rectangles => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_create_rectangles_delegate>("cairo_region_create_rectangles");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_region_destroy (IntPtr region);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_region_destroy_delegate (IntPtr region);
+		public static cairo_region_destroy_delegate cairo_region_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_destroy_delegate>("cairo_region_destroy");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern bool cairo_region_equal (IntPtr a, IntPtr b);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate bool cairo_region_equal_delegate (IntPtr a, IntPtr b);
+		public static cairo_region_equal_delegate cairo_region_equal => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_equal_delegate>("cairo_region_equal");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_region_get_extents (IntPtr region, out RectangleInt extents);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_region_get_extents_delegate (IntPtr region, out RectangleInt extents);
+		public static cairo_region_get_extents_delegate cairo_region_get_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_get_extents_delegate>("cairo_region_get_extents");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_region_get_rectangle (IntPtr region, int nth, out RectangleInt rectangle);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_region_get_rectangle_delegate (IntPtr region, int nth, out RectangleInt rectangle);
+		public static cairo_region_get_rectangle_delegate cairo_region_get_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_get_rectangle_delegate>("cairo_region_get_rectangle");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_intersect (IntPtr dst, IntPtr other);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_intersect_delegate (IntPtr dst, IntPtr other);
+		public static cairo_region_intersect_delegate cairo_region_intersect => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_intersect_delegate>("cairo_region_intersect");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_intersect_rectangle (IntPtr dst, ref RectangleInt rectangle);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_intersect_rectangle_delegate (IntPtr dst, ref RectangleInt rectangle);
+		public static cairo_region_intersect_rectangle_delegate cairo_region_intersect_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_intersect_rectangle_delegate>("cairo_region_intersect_rectangle");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern bool cairo_region_is_empty (IntPtr region);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate bool cairo_region_is_empty_delegate (IntPtr region);
+		public static cairo_region_is_empty_delegate cairo_region_is_empty => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_is_empty_delegate>("cairo_region_is_empty");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_region_num_rectangles (IntPtr region);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_region_num_rectangles_delegate (IntPtr region);
+		public static cairo_region_num_rectangles_delegate cairo_region_num_rectangles => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_num_rectangles_delegate>("cairo_region_num_rectangles");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_region_reference (IntPtr region);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_region_reference_delegate (IntPtr region);
+		public static cairo_region_reference_delegate cairo_region_reference => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_reference_delegate>("cairo_region_reference");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_status (IntPtr region);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_status_delegate (IntPtr region);
+		public static cairo_region_status_delegate cairo_region_status => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_status_delegate>("cairo_region_status");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_subtract (IntPtr dst, IntPtr other);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_subtract_delegate (IntPtr dst, IntPtr other);
+		public static cairo_region_subtract_delegate cairo_region_subtract => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_subtract_delegate>("cairo_region_subtract");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_subtract_rectangle (IntPtr dst, ref RectangleInt rectangle);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_subtract_rectangle_delegate (IntPtr dst, ref RectangleInt rectangle);
+		public static cairo_region_subtract_rectangle_delegate cairo_region_subtract_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_subtract_rectangle_delegate>("cairo_region_subtract_rectangle");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_region_translate (IntPtr region, int dx, int dy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_region_translate_delegate (IntPtr region, int dx, int dy);
+		public static cairo_region_translate_delegate cairo_region_translate => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_translate_delegate>("cairo_region_translate");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_union (IntPtr dst, IntPtr other);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_union_delegate (IntPtr dst, IntPtr other);
+		public static cairo_region_union_delegate cairo_region_union => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_union_delegate>("cairo_region_union");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_union_rectangle (IntPtr dst, ref RectangleInt rectangle);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_union_rectangle_delegate (IntPtr dst, ref RectangleInt rectangle);
+		public static cairo_region_union_rectangle_delegate cairo_region_union_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_union_rectangle_delegate>("cairo_region_union_rectangle");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_xor (IntPtr dst, IntPtr other);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_xor_delegate (IntPtr dst, IntPtr other);
+		public static cairo_region_xor_delegate cairo_region_xor => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_xor_delegate>("cairo_region_xor");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_region_xor_rectangle (IntPtr dst, ref RectangleInt rectangle);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_region_xor_rectangle_delegate (IntPtr dst, ref RectangleInt rectangle);
+		public static cairo_region_xor_rectangle_delegate cairo_region_xor_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_region_xor_rectangle_delegate>("cairo_region_xor_rectangle");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_rel_curve_to (IntPtr cr, double dx1, double dy1, double dx2, double dy2, double dx3, double dy3);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_rel_curve_to_delegate (IntPtr cr, double dx1, double dy1, double dx2, double dy2, double dx3, double dy3);
+		public static cairo_rel_curve_to_delegate cairo_rel_curve_to => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_rel_curve_to_delegate>("cairo_rel_curve_to");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_rel_line_to (IntPtr cr, double dx, double dy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_rel_line_to_delegate (IntPtr cr, double dx, double dy);
+		public static cairo_rel_line_to_delegate cairo_rel_line_to => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_rel_line_to_delegate>("cairo_rel_line_to");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_rel_move_to (IntPtr cr, double dx, double dy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_rel_move_to_delegate (IntPtr cr, double dx, double dy);
+		public static cairo_rel_move_to_delegate cairo_rel_move_to => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_rel_move_to_delegate>("cairo_rel_move_to");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_reset_clip (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_reset_clip_delegate (IntPtr cr);
+		public static cairo_reset_clip_delegate cairo_reset_clip => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_reset_clip_delegate>("cairo_reset_clip");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_restore (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_restore_delegate (IntPtr cr);
+		public static cairo_restore_delegate cairo_restore => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_restore_delegate>("cairo_restore");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_rotate (IntPtr cr, double angle);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_rotate_delegate (IntPtr cr, double angle);
+		public static cairo_rotate_delegate cairo_rotate => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_rotate_delegate>("cairo_rotate");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_save (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_save_delegate (IntPtr cr);
+		public static cairo_save_delegate cairo_save => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_save_delegate>("cairo_save");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_scale (IntPtr cr, double sx, double sy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_scale_delegate (IntPtr cr, double sx, double sy);
+		public static cairo_scale_delegate cairo_scale => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scale_delegate>("cairo_scale");
 		
 		// ScaledFont
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_scaled_font_create (IntPtr fontFace, Matrix matrix, Matrix ctm, IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_scaled_font_create_delegate (IntPtr fontFace, Matrix matrix, Matrix ctm, IntPtr options);
+		public static cairo_scaled_font_create_delegate cairo_scaled_font_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_create_delegate>("cairo_scaled_font_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_scaled_font_destroy (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_scaled_font_destroy_delegate (IntPtr scaled_font);
+		public static cairo_scaled_font_destroy_delegate cairo_scaled_font_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_destroy_delegate>("cairo_scaled_font_destroy");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_scaled_font_extents (IntPtr scaled_font, out FontExtents extents);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_scaled_font_extents_delegate (IntPtr scaled_font, out FontExtents extents);
+		public static cairo_scaled_font_extents_delegate cairo_scaled_font_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_extents_delegate>("cairo_scaled_font_extents");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_scaled_font_get_ctm (IntPtr scaled_font, out Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_scaled_font_get_ctm_delegate (IntPtr scaled_font, out Matrix matrix);
+		public static cairo_scaled_font_get_ctm_delegate cairo_scaled_font_get_ctm => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_get_ctm_delegate>("cairo_scaled_font_get_ctm");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_scaled_font_get_font_face (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_scaled_font_get_font_face_delegate (IntPtr scaled_font);
+		public static cairo_scaled_font_get_font_face_delegate cairo_scaled_font_get_font_face => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_get_font_face_delegate>("cairo_scaled_font_get_font_face");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_scaled_font_get_font_matrix (IntPtr scaled_font, out Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_scaled_font_get_font_matrix_delegate (IntPtr scaled_font, out Matrix matrix);
+		public static cairo_scaled_font_get_font_matrix_delegate cairo_scaled_font_get_font_matrix => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_get_font_matrix_delegate>("cairo_scaled_font_get_font_matrix");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_scaled_font_get_font_options (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_scaled_font_get_font_options_delegate (IntPtr scaled_font);
+		public static cairo_scaled_font_get_font_options_delegate cairo_scaled_font_get_font_options => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_get_font_options_delegate>("cairo_scaled_font_get_font_options");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern FontType cairo_scaled_font_get_type (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate FontType cairo_scaled_font_get_type_delegate (IntPtr scaled_font);
+		public static cairo_scaled_font_get_type_delegate cairo_scaled_font_get_type => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_get_type_delegate>("cairo_scaled_font_get_type");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_scaled_font_glyph_extents (IntPtr scaled_font, IntPtr glyphs, int num_glyphs, out TextExtents extents);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_scaled_font_glyph_extents_delegate (IntPtr scaled_font, IntPtr glyphs, int num_glyphs, out TextExtents extents);
+		public static cairo_scaled_font_glyph_extents_delegate cairo_scaled_font_glyph_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_glyph_extents_delegate>("cairo_scaled_font_glyph_extents");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_scaled_font_reference (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_scaled_font_reference_delegate (IntPtr scaled_font);
+		public static cairo_scaled_font_reference_delegate cairo_scaled_font_reference => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_reference_delegate>("cairo_scaled_font_reference");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_scaled_font_status (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_scaled_font_status_delegate (IntPtr scaled_font);
+		public static cairo_scaled_font_status_delegate cairo_scaled_font_status => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_status_delegate>("cairo_scaled_font_status");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_scaled_font (IntPtr cr, IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_scaled_font_delegate (IntPtr cr, IntPtr scaled_font);
+		public static cairo_set_scaled_font_delegate cairo_set_scaled_font => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_scaled_font_delegate>("cairo_set_scaled_font");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_get_scaled_font (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_get_scaled_font_delegate (IntPtr cr);
+		public static cairo_get_scaled_font_delegate cairo_get_scaled_font => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_scaled_font_delegate>("cairo_get_scaled_font");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_scaled_font_text_extents (IntPtr scaled_font, byte[] utf8, out TextExtents extents);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_scaled_font_text_extents_delegate (IntPtr scaled_font, byte[] utf8, out TextExtents extents);
+		public static cairo_scaled_font_text_extents_delegate cairo_scaled_font_text_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_scaled_font_text_extents_delegate>("cairo_scaled_font_text_extents");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_select_font_face (IntPtr cr, string family, FontSlant slant, FontWeight weight);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_select_font_face_delegate (IntPtr cr, string family, FontSlant slant, FontWeight weight);
+		public static cairo_select_font_face_delegate cairo_select_font_face => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_select_font_face_delegate>("cairo_select_font_face");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_antialias (IntPtr cr, Antialias antialias);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_antialias_delegate (IntPtr cr, Antialias antialias);
+		public static cairo_set_antialias_delegate cairo_set_antialias => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_antialias_delegate>("cairo_set_antialias");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_dash (IntPtr cr, double [] dashes, int ndash, double offset);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_dash_delegate (IntPtr cr, double [] dashes, int ndash, double offset);
+		public static cairo_set_dash_delegate cairo_set_dash => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_dash_delegate>("cairo_set_dash");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_get_dash (IntPtr cr, IntPtr dashes, out double offset);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_get_dash_delegate (IntPtr cr, IntPtr dashes, out double offset);
+		public static cairo_get_dash_delegate cairo_get_dash => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_dash_delegate>("cairo_get_dash");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_get_dash_count (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_get_dash_count_delegate (IntPtr cr);
+		public static cairo_get_dash_count_delegate cairo_get_dash_count => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_get_dash_count_delegate>("cairo_get_dash_count");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_fill_rule (IntPtr cr, Cairo.FillRule fill_rule);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_fill_rule_delegate (IntPtr cr, Cairo.FillRule fill_rule);
+		public static cairo_set_fill_rule_delegate cairo_set_fill_rule => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_fill_rule_delegate>("cairo_set_fill_rule");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_font_face (IntPtr cr, IntPtr fontFace);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_font_face_delegate (IntPtr cr, IntPtr fontFace);
+		public static cairo_set_font_face_delegate cairo_set_font_face => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_font_face_delegate>("cairo_set_font_face");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_font_matrix (IntPtr cr, Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_font_matrix_delegate (IntPtr cr, Matrix matrix);
+		public static cairo_set_font_matrix_delegate cairo_set_font_matrix => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_font_matrix_delegate>("cairo_set_font_matrix");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_font_options (IntPtr cr, IntPtr options);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_font_options_delegate (IntPtr cr, IntPtr options);
+		public static cairo_set_font_options_delegate cairo_set_font_options => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_font_options_delegate>("cairo_set_font_options");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_font_size (IntPtr cr, double size);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_font_size_delegate (IntPtr cr, double size);
+		public static cairo_set_font_size_delegate cairo_set_font_size => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_font_size_delegate>("cairo_set_font_size");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_line_cap (IntPtr cr, LineCap line_cap);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_line_cap_delegate (IntPtr cr, LineCap line_cap);
+		public static cairo_set_line_cap_delegate cairo_set_line_cap => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_line_cap_delegate>("cairo_set_line_cap");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_line_join (IntPtr cr, LineJoin line_join);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_line_join_delegate (IntPtr cr, LineJoin line_join);
+		public static cairo_set_line_join_delegate cairo_set_line_join => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_line_join_delegate>("cairo_set_line_join");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_line_width (IntPtr cr, double width);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_line_width_delegate (IntPtr cr, double width);
+		public static cairo_set_line_width_delegate cairo_set_line_width => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_line_width_delegate>("cairo_set_line_width");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_matrix (IntPtr cr, Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_matrix_delegate (IntPtr cr, Matrix matrix);
+		public static cairo_set_matrix_delegate cairo_set_matrix => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_matrix_delegate>("cairo_set_matrix");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_miter_limit (IntPtr cr, double limit);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_miter_limit_delegate (IntPtr cr, double limit);
+		public static cairo_set_miter_limit_delegate cairo_set_miter_limit => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_miter_limit_delegate>("cairo_set_miter_limit");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_operator (IntPtr cr, Cairo.Operator op);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_operator_delegate (IntPtr cr, Cairo.Operator op);
+		public static cairo_set_operator_delegate cairo_set_operator => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_operator_delegate>("cairo_set_operator");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_source (IntPtr cr, IntPtr pattern);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_source_delegate (IntPtr cr, IntPtr pattern);
+		public static cairo_set_source_delegate cairo_set_source => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_source_delegate>("cairo_set_source");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_source_rgb (IntPtr cr, double red, double green, double blue);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_source_rgb_delegate (IntPtr cr, double red, double green, double blue);
+		public static cairo_set_source_rgb_delegate cairo_set_source_rgb => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_source_rgb_delegate>("cairo_set_source_rgb");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_source_rgba (IntPtr cr, double red, double green, double blue, double alpha);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_source_rgba_delegate (IntPtr cr, double red, double green, double blue, double alpha);
+		public static cairo_set_source_rgba_delegate cairo_set_source_rgba => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_source_rgba_delegate>("cairo_set_source_rgba");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_source_surface (IntPtr cr, IntPtr surface, double x, double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_source_surface_delegate (IntPtr cr, IntPtr surface, double x, double y);
+		public static cairo_set_source_surface_delegate cairo_set_source_surface => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_source_surface_delegate>("cairo_set_source_surface");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_set_tolerance (IntPtr cr, double tolerance);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_set_tolerance_delegate (IntPtr cr, double tolerance);
+		public static cairo_set_tolerance_delegate cairo_set_tolerance => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_set_tolerance_delegate>("cairo_set_tolerance");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_show_glyphs (IntPtr ct, IntPtr glyphs, int num_glyphs);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_show_glyphs_delegate (IntPtr ct, IntPtr glyphs, int num_glyphs);
+		public static cairo_show_glyphs_delegate cairo_show_glyphs => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_show_glyphs_delegate>("cairo_show_glyphs");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_show_page (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_show_page_delegate (IntPtr cr);
+		public static cairo_show_page_delegate cairo_show_page => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_show_page_delegate>("cairo_show_page");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_show_text (IntPtr cr, byte[] utf8);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_show_text_delegate (IntPtr cr, byte[] utf8);
+		public static cairo_show_text_delegate cairo_show_text => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_show_text_delegate>("cairo_show_text");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_status (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_status_delegate (IntPtr cr);
+		public static cairo_status_delegate cairo_status => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_status_delegate>("cairo_status");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_status_to_string (Status status);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_status_to_string_delegate (Status status);
+		public static cairo_status_to_string_delegate cairo_status_to_string => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_status_to_string_delegate>("cairo_status_to_string");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_stroke (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_stroke_delegate (IntPtr cr);
+		public static cairo_stroke_delegate cairo_stroke => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_stroke_delegate>("cairo_stroke");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_stroke_extents (IntPtr cr, out double x1, out double y1, out double x2, out double y2);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_stroke_extents_delegate (IntPtr cr, out double x1, out double y1, out double x2, out double y2);
+		public static cairo_stroke_extents_delegate cairo_stroke_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_stroke_extents_delegate>("cairo_stroke_extents");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_stroke_preserve (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_stroke_preserve_delegate (IntPtr cr);
+		public static cairo_stroke_preserve_delegate cairo_stroke_preserve => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_stroke_preserve_delegate>("cairo_stroke_preserve");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_rectangle_list_destroy (IntPtr rectangle_list);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_rectangle_list_destroy_delegate (IntPtr rectangle_list);
+		public static cairo_rectangle_list_destroy_delegate cairo_rectangle_list_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_rectangle_list_destroy_delegate>("cairo_rectangle_list_destroy");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_copy_clip_rectangle_list (IntPtr cr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_copy_clip_rectangle_list_delegate (IntPtr cr);
+		public static cairo_copy_clip_rectangle_list_delegate cairo_copy_clip_rectangle_list => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_copy_clip_rectangle_list_delegate>("cairo_copy_clip_rectangle_list");
 
 		// Surface
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_surface_create_similar (IntPtr surface, Cairo.Content content, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_surface_create_similar_delegate (IntPtr surface, Cairo.Content content, int width, int height);
+		public static cairo_surface_create_similar_delegate cairo_surface_create_similar => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_create_similar_delegate>("cairo_surface_create_similar");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_destroy (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_destroy_delegate (IntPtr surface);
+		public static cairo_surface_destroy_delegate cairo_surface_destroy => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_destroy_delegate>("cairo_surface_destroy");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_finish (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_finish_delegate (IntPtr surface);
+		public static cairo_surface_finish_delegate cairo_surface_finish => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_finish_delegate>("cairo_surface_finish");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_flush (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_flush_delegate (IntPtr surface);
+		public static cairo_surface_flush_delegate cairo_surface_flush => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_flush_delegate>("cairo_surface_flush");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Content cairo_surface_get_content (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Content cairo_surface_get_content_delegate (IntPtr surface);
+		public static cairo_surface_get_content_delegate cairo_surface_get_content => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_get_content_delegate>("cairo_surface_get_content");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_get_device_offset (IntPtr surface, out double x, out double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_get_device_offset_delegate (IntPtr surface, out double x, out double y);
+		public static cairo_surface_get_device_offset_delegate cairo_surface_get_device_offset => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_get_device_offset_delegate>("cairo_surface_get_device_offset");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_get_font_options (IntPtr surface, IntPtr FontOptions);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_get_font_options_delegate (IntPtr surface, IntPtr FontOptions);
+		public static cairo_surface_get_font_options_delegate cairo_surface_get_font_options => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_get_font_options_delegate>("cairo_surface_get_font_options");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern uint cairo_surface_get_reference_count (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate uint cairo_surface_get_reference_count_delegate (IntPtr surface);
+		public static cairo_surface_get_reference_count_delegate cairo_surface_get_reference_count => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_get_reference_count_delegate>("cairo_surface_get_reference_count");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern SurfaceType cairo_surface_get_type (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate SurfaceType cairo_surface_get_type_delegate (IntPtr surface);
+		public static cairo_surface_get_type_delegate cairo_surface_get_type => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_get_type_delegate>("cairo_surface_get_type");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_mark_dirty (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_mark_dirty_delegate (IntPtr surface);
+		public static cairo_surface_mark_dirty_delegate cairo_surface_mark_dirty => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_mark_dirty_delegate>("cairo_surface_mark_dirty");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_mark_dirty_rectangle (IntPtr surface, int x, int y, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_mark_dirty_rectangle_delegate (IntPtr surface, int x, int y, int width, int height);
+		public static cairo_surface_mark_dirty_rectangle_delegate cairo_surface_mark_dirty_rectangle => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_mark_dirty_rectangle_delegate>("cairo_surface_mark_dirty_rectangle");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_surface_reference (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_surface_reference_delegate (IntPtr surface);
+		public static cairo_surface_reference_delegate cairo_surface_reference => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_reference_delegate>("cairo_surface_reference");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_set_device_offset (IntPtr surface, double x, double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_set_device_offset_delegate (IntPtr surface, double x, double y);
+		public static cairo_surface_set_device_offset_delegate cairo_surface_set_device_offset => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_set_device_offset_delegate>("cairo_surface_set_device_offset");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_set_fallback_resolution (IntPtr surface, double x, double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_set_fallback_resolution_delegate (IntPtr surface, double x, double y);
+		public static cairo_surface_set_fallback_resolution_delegate cairo_surface_set_fallback_resolution => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_set_fallback_resolution_delegate>("cairo_surface_set_fallback_resolution");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_surface_status (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_surface_status_delegate (IntPtr surface);
+		public static cairo_surface_status_delegate cairo_surface_status => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_status_delegate>("cairo_surface_status");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_surface_write_to_png (IntPtr surface, string filename);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_surface_write_to_png_delegate (IntPtr surface, string filename);
+		public static cairo_surface_write_to_png_delegate cairo_surface_write_to_png => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_surface_write_to_png_delegate>("cairo_surface_write_to_png");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_svg_surface_create (string fileName, double width, double height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_svg_surface_create_delegate (string fileName, double width, double height);
+		public static cairo_svg_surface_create_delegate cairo_svg_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_svg_surface_create_delegate>("cairo_svg_surface_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_svg_surface_restrict_to_version (IntPtr surface, SvgVersion version);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_svg_surface_restrict_to_version_delegate (IntPtr surface, SvgVersion version);
+		public static cairo_svg_surface_restrict_to_version_delegate cairo_svg_surface_restrict_to_version => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_svg_surface_restrict_to_version_delegate>("cairo_svg_surface_restrict_to_version");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_text_extents (IntPtr cr, byte[] utf8, out TextExtents extents);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_text_extents_delegate (IntPtr cr, byte[] utf8, out TextExtents extents);
+		public static cairo_text_extents_delegate cairo_text_extents => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_text_extents_delegate>("cairo_text_extents");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_text_path (IntPtr ct, byte[] utf8);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_text_path_delegate (IntPtr ct, byte[] utf8);
+		public static cairo_text_path_delegate cairo_text_path => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_text_path_delegate>("cairo_text_path");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_transform (IntPtr cr, Matrix matrix);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_transform_delegate (IntPtr cr, Matrix matrix);
+		public static cairo_transform_delegate cairo_transform => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_transform_delegate>("cairo_transform");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_translate (IntPtr cr, double tx, double ty);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_translate_delegate (IntPtr cr, double tx, double ty);
+		public static cairo_translate_delegate cairo_translate => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_translate_delegate>("cairo_translate");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_user_to_device (IntPtr cr, ref double x, ref double y);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_user_to_device_delegate (IntPtr cr, ref double x, ref double y);
+		public static cairo_user_to_device_delegate cairo_user_to_device => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_user_to_device_delegate>("cairo_user_to_device");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_user_to_device_distance (IntPtr cr, ref double dx, ref double dy);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_user_to_device_distance_delegate (IntPtr cr, ref double dx, ref double dy);
+		public static cairo_user_to_device_distance_delegate cairo_user_to_device_distance => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_user_to_device_distance_delegate>("cairo_user_to_device_distance");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_version ();
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_version_delegate ();
+		public static cairo_version_delegate cairo_version => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_version_delegate>("cairo_version");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_version_string ();
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_version_string_delegate ();
+		public static cairo_version_string_delegate cairo_version_string => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_version_string_delegate>("cairo_version_string");
 		
 		// DirectFBSurface
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_directfb_surface_create (IntPtr dfb, IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_directfb_surface_create_delegate (IntPtr dfb, IntPtr surface);
+		public static cairo_directfb_surface_create_delegate cairo_directfb_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_directfb_surface_create_delegate>("cairo_directfb_surface_create");
 		
 		// win32 fonts
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_win32_font_face_create_for_logfontw (IntPtr logfontw);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_win32_font_face_create_for_logfontw_delegate (IntPtr logfontw);
+		public static cairo_win32_font_face_create_for_logfontw_delegate cairo_win32_font_face_create_for_logfontw => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_win32_font_face_create_for_logfontw_delegate>("cairo_win32_font_face_create_for_logfontw");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_win32_scaled_font_done_font (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_win32_scaled_font_done_font_delegate (IntPtr scaled_font);
+		public static cairo_win32_scaled_font_done_font_delegate cairo_win32_scaled_font_done_font => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_win32_scaled_font_done_font_delegate>("cairo_win32_scaled_font_done_font");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern double cairo_win32_scaled_font_get_metrics_factor (IntPtr scaled_font);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate double cairo_win32_scaled_font_get_metrics_factor_delegate (IntPtr scaled_font);
+		public static cairo_win32_scaled_font_get_metrics_factor_delegate cairo_win32_scaled_font_get_metrics_factor => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_win32_scaled_font_get_metrics_factor_delegate>("cairo_win32_scaled_font_get_metrics_factor");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern Status cairo_win32_scaled_font_select_font (IntPtr scaled_font, IntPtr hdc);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate Status cairo_win32_scaled_font_select_font_delegate (IntPtr scaled_font, IntPtr hdc);
+		public static cairo_win32_scaled_font_select_font_delegate cairo_win32_scaled_font_select_font => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_win32_scaled_font_select_font_delegate>("cairo_win32_scaled_font_select_font");
 		
 		// win32 surface
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_win32_surface_create (IntPtr hdc);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_win32_surface_create_delegate (IntPtr hdc);
+		public static cairo_win32_surface_create_delegate cairo_win32_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_win32_surface_create_delegate>("cairo_win32_surface_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_win32_surface_create_with_ddb (IntPtr hdc, Format format, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_win32_surface_create_with_ddb_delegate (IntPtr hdc, Format format, int width, int height);
+		public static cairo_win32_surface_create_with_ddb_delegate cairo_win32_surface_create_with_ddb => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_win32_surface_create_with_ddb_delegate>("cairo_win32_surface_create_with_ddb");
 
 		// XcbSurface
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_xcb_surface_create (IntPtr connection, uint drawable, IntPtr visual, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_xcb_surface_create_delegate (IntPtr connection, uint drawable, IntPtr visual, int width, int height);
+		public static cairo_xcb_surface_create_delegate cairo_xcb_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xcb_surface_create_delegate>("cairo_xcb_surface_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_xcb_surface_create_for_bitmap (IntPtr connection, uint bitmap, IntPtr screen, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_xcb_surface_create_for_bitmap_delegate (IntPtr connection, uint bitmap, IntPtr screen, int width, int height);
+		public static cairo_xcb_surface_create_for_bitmap_delegate cairo_xcb_surface_create_for_bitmap => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xcb_surface_create_for_bitmap_delegate>("cairo_xcb_surface_create_for_bitmap");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_xcb_surface_set_size (IntPtr surface, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_xcb_surface_set_size_delegate (IntPtr surface, int width, int height);
+		public static cairo_xcb_surface_set_size_delegate cairo_xcb_surface_set_size => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xcb_surface_set_size_delegate>("cairo_xcb_surface_set_size");
 		
 		// XlibSurface
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_xlib_surface_create (IntPtr display, IntPtr drawable, IntPtr visual, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_xlib_surface_create_delegate (IntPtr display, IntPtr drawable, IntPtr visual, int width, int height);
+		public static cairo_xlib_surface_create_delegate cairo_xlib_surface_create => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_create_delegate>("cairo_xlib_surface_create");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_xlib_surface_create_for_bitmap (IntPtr display, IntPtr bitmap, IntPtr screen, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_xlib_surface_create_for_bitmap_delegate (IntPtr display, IntPtr bitmap, IntPtr screen, int width, int height);
+		public static cairo_xlib_surface_create_for_bitmap_delegate cairo_xlib_surface_create_for_bitmap => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_create_for_bitmap_delegate>("cairo_xlib_surface_create_for_bitmap");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_xlib_surface_get_depth (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_xlib_surface_get_depth_delegate (IntPtr surface);
+		public static cairo_xlib_surface_get_depth_delegate cairo_xlib_surface_get_depth => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_get_depth_delegate>("cairo_xlib_surface_get_depth");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_xlib_surface_get_display (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_xlib_surface_get_display_delegate (IntPtr surface);
+		public static cairo_xlib_surface_get_display_delegate cairo_xlib_surface_get_display => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_get_display_delegate>("cairo_xlib_surface_get_display");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_xlib_surface_get_drawable (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_xlib_surface_get_drawable_delegate (IntPtr surface);
+		public static cairo_xlib_surface_get_drawable_delegate cairo_xlib_surface_get_drawable => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_get_drawable_delegate>("cairo_xlib_surface_get_drawable");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_xlib_surface_get_height (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_xlib_surface_get_height_delegate (IntPtr surface);
+		public static cairo_xlib_surface_get_height_delegate cairo_xlib_surface_get_height => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_get_height_delegate>("cairo_xlib_surface_get_height");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_xlib_surface_get_screen (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_xlib_surface_get_screen_delegate (IntPtr surface);
+		public static cairo_xlib_surface_get_screen_delegate cairo_xlib_surface_get_screen => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_get_screen_delegate>("cairo_xlib_surface_get_screen");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_xlib_surface_get_visual (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate IntPtr cairo_xlib_surface_get_visual_delegate (IntPtr surface);
+		public static cairo_xlib_surface_get_visual_delegate cairo_xlib_surface_get_visual => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_get_visual_delegate>("cairo_xlib_surface_get_visual");
 
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern int cairo_xlib_surface_get_width (IntPtr surface);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate int cairo_xlib_surface_get_width_delegate (IntPtr surface);
+		public static cairo_xlib_surface_get_width_delegate cairo_xlib_surface_get_width => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_get_width_delegate>("cairo_xlib_surface_get_width");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_xlib_surface_set_drawable (IntPtr surface, IntPtr drawable, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_xlib_surface_set_drawable_delegate (IntPtr surface, IntPtr drawable, int width, int height);
+		public static cairo_xlib_surface_set_drawable_delegate cairo_xlib_surface_set_drawable => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_set_drawable_delegate>("cairo_xlib_surface_set_drawable");
 		
-		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern void cairo_xlib_surface_set_size (IntPtr surface, int width, int height);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+		public delegate void cairo_xlib_surface_set_size_delegate (IntPtr surface, int width, int height);
+		public static cairo_xlib_surface_set_size_delegate cairo_xlib_surface_set_size => Cairo.DynLoader.NativeDllHelper.GetDllImport<cairo_xlib_surface_set_size_delegate>("cairo_xlib_surface_set_size");
 	}
 }
